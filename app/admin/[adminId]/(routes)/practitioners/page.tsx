@@ -1,3 +1,4 @@
+'use client'
 import { UsersTable } from "@/components/users-table";
 import { Card, CardBody } from "@nextui-org/react";
 import { PractitionerModal } from "./[practitionerId]/components/practitioner-modal";

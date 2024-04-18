@@ -1,9 +1,6 @@
 "use client";
 
 import { User2 } from "lucide-react";
-import { useEffect, useState } from "react";
-import { useParams } from "next/navigation";
-import { emptyPatient } from "@/data/data";
 import CustomSuspense from "@/components/ui/custom-suspense";
 import Loading from "@/components/ui/loading";
 
