@@ -3,8 +3,8 @@ require("dotenv").config();
 // Config object to be passed to Msal on creation
 export const msalConfig = {
   auth: {
-    clientId: process.env.AZURE_AD_B2C_CLIENT_ID,
-    authority: process.env.AZURE_AUTHORITY,
+    clientId: process.env.AZURE_AD_B2C_CLIENT_ID || '',
+    authority: process.env.AZURE_AUTHORITY || '',
     redirectUri: "/",
     postLogoutRedirectUri: "/",
     clientCapabilities: ["CP1"],
