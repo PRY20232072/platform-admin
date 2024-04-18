@@ -1,7 +1,5 @@
 import { getServerSession } from "next-auth/next";
 import { redirect } from "next/navigation";
-import PatientHome from "@/components/patient/patient-home";
-import PractitionerHome from "@/components/practitioner/practitioner-home";
 import AdminHome from "@/components/admin/admin-home";
 import { MsalAuthenticationTemplate, useMsal } from "@azure/msal-react";
 import {

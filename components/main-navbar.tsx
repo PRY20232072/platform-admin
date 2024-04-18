@@ -5,12 +5,15 @@ import { useParams, usePathname } from "next/navigation";
 
 import msgraphService from "@/services/msgraphService";
 import { useState, useEffect } from "react";
+interface GraphData {
+  id: string | number; 
+}
 export function MainNavbar({
   className,
 
   ...props
 }: React.HTMLAttributes<HTMLElement>) {
-  const [graphData, setGraphData] = useState(null);
+  const [graphData, setGraphData] = useState<GraphData | null>(null);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -34,7 +37,7 @@ export function MainNavbar({
       active: pathname === `/`,
     },
     {
-      href: `/admin/${graphData?.id}/patients`,
+      href: `/admin/${graphData?.id }/patients`,
       label: "Pacientes",
       active: pathname === `/admin/${graphData?.id}/patients`,
     },

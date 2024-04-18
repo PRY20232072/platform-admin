@@ -10,7 +10,6 @@ import AuthProvider from "./context/AuthProvider";
 import { getServerSession } from "next-auth/next";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { authOptions } from "@/lib/utils/authOptions";
 
 // import { useRouter } from "next/router";
 export const metadata: Metadata = {
