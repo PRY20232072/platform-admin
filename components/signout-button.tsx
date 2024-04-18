@@ -22,7 +22,9 @@ import { emptyAdmin } from "@/data/data";
 export const SignOutButton = () => {
   const { instance } = useMsal();
   const router = useRouter();
-  const [graphData, setGraphData] = useState<any>({});
+  const [graphData, setGraphData] = useState<any>({
+    identities: [{ issuerAssignedId: "" }],
+  });
 
   useEffect(() => {
     const fetchData = async () => {
