@@ -1,30 +1,9 @@
 "use client";
 
-import { useSession } from "next-auth/react";
-import { useEffect, useState } from "react";
-import {
-  addressTypes,
-  civilStatus,
-  emptyPractitioner,
-  genders,
-} from "@/data/data";
-import { CustomAutocomplete } from "@/components/ui/auto-complete";
-import { Button, Input } from "@nextui-org/react";
-import CustomSuspense from "@/components/ui/custom-suspense";
-import Loading from "@/components/ui/loading";
-import { toast } from "react-toastify";
+import { useState } from "react";
+import { Input } from "@nextui-org/react";
 
 export default function AdminProfileDetails({ graphData }: { graphData: any }) {
-  const [isInvalid, setIsInvalid] = useState(false);
-  const validatePhone = (phone: string) => phone.match(/^9\d{8}$/);
-  const [practitioner, serPractitioner] = useState(emptyPractitioner);
-  const [provincesOptions, setProvincesOptions] = useState<
-    { id: string; name: string; department_id: string }[]
-  >([]);
-  const [districtsOptions, setDistrictsOptions] = useState<
-    { id: string; name: string; province_id: string }[]
-  >([]);
-
   return (
     <div className='w-full max-w-4xl mx-auto'>
       <div className='mb-8'>

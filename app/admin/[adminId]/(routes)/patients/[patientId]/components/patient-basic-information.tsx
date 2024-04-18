@@ -6,7 +6,7 @@ import CustomSuspense from "@/components/ui/custom-suspense";
 import FormSkeleton from "@/components/ui/skeletons/form-skeleton";
 import { Input } from "@nextui-org/react";
 
-export default function PatientBasicInformation({ userData }) {
+export default function PatientBasicInformation({ userData }: { userData: any }) {
   return (
     <CustomSuspense isLoading={userData === null} fallback={<FormSkeleton />}>
       <Card>

@@ -1,17 +1,10 @@
 "use client";
-import { PublicClientApplication, EventType } from "@azure/msal-browser";
-import { msalConfig } from "../../authConfig";
-import { CustomNavigationClient } from "../../lib/utils/NavigationClient";
-import { useRouter } from "next/navigation";
 
-import { SessionProvider } from "next-auth/react";
-import { MsalAuthenticationTemplate, useMsal } from "@azure/msal-react";
+import { MsalAuthenticationTemplate } from "@azure/msal-react";
 import {
-  InteractionStatus,
   InteractionType,
-  InteractionRequiredAuthError,
 } from "@azure/msal-browser";
-import { loginRequest, graphConfig } from "@/authConfig";
+import { loginRequest } from "@/authConfig";
 
 const ErrorComponent = ({ error }: { error: any }) => {
   return (
