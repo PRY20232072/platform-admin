@@ -11,7 +11,6 @@ import { getServerSession } from "next-auth/next";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-// import { useRouter } from "next/router";
 export const metadata: Metadata = {
   title: {
     default: siteConfig.name,
@@ -19,11 +18,7 @@ export const metadata: Metadata = {
   },
   description: siteConfig.description,
 
-  icons: {
-    icon: "/favicon.ico",
-    shortcut: "/favicon-16x16.png",
-    apple: "/apple-touch-icon.png",
-  },
+  icons: ["https://vercel.pub/favicon.ico"],
 };
 
 export default async function RootLayout({
@@ -31,7 +26,6 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  
   return (
     <html lang='en' suppressHydrationWarning>
       <head />
@@ -44,7 +38,6 @@ export default async function RootLayout({
         >
           <Providers themeProps={{ attribute: "class", defaultTheme: "dark" }}>
             <div className='relative flex flex-col h-screen'>
-              {/* <Navbar isLoggedIn={session}/> */}
               <Navbar isLoggedIn={true} />
 
               <main className='container mx-auto px-4 sm:px-6 md:px-8 lg:max-w-5xl xl:max-w-6xl 2xl:max-w-7xl flex-grow'>

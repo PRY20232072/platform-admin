@@ -6,23 +6,12 @@ import {
   NavbarMenuToggle,
   NavbarBrand,
 } from "@nextui-org/navbar";
-import {
-  Avatar,
-  Dropdown,
-  DropdownItem,
-  DropdownMenu,
-  DropdownTrigger,
-} from "@nextui-org/react";
 import Link from "next/link";
 import { ThemeSwitch } from "@/components/theme-switch";
 import { MainNavbar } from "@/components/main-navbar";
-import { redirect, useRouter } from "next/navigation";
 
-import { Bell } from "lucide-react";
-import { useSession, signOut } from "next-auth/react";
-import { useIsAuthenticated, useMsal } from "@azure/msal-react";
+import { useIsAuthenticated } from "@azure/msal-react";
 import SignInSignOutButton from "./signin-signout-button";
-import { useGraphData } from "@/hooks/useGraphData";
 
 
 import dotenv from "dotenv";

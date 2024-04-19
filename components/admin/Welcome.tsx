@@ -23,7 +23,7 @@ export default function Welcome() {
     <>
       <div className='flex flex-col  border-b border-gray-200 items-start gap-10 px-4 sm:px-6 md:px-8 lg:px-20 xl:px-24 2xl:px-32 py-10 relative flex-[0_0_auto]'>
         <div className='w-full sm:w-3/4 z-10 font-bold text-4xl leading-12 relative mt-[-1.00px]'>
-          Hola {graphData?.displayName}
+          Bienvenido {graphData?.displayName}
         </div>
       </div>
     </>

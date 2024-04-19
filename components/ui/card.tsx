@@ -70,7 +70,7 @@ export const Card: React.FC<CardProps> = ({
           </div>
           {cardData.map((data, index) => (
             // eslint-disable-next-line react/jsx-key
-            <Tooltip content={data.col2} placement='top'>
+            <Tooltip key={index} content={data.col2} placement='top'>
               <div key={index} className=' text-sm font-normal leading-normal'>
                 {data.col2.substring(0, 8) + "..."}
               </div>

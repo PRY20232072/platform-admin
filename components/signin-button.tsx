@@ -1,10 +1,6 @@
 "use client";
 import { useState } from "react";
 import { useMsal } from "@azure/msal-react";
-// import Button from "@mui/material/Button";
-import { Button as BT } from "@nextui-org/react";
-/* import MenuItem from '@mui/material/MenuItem';
-import Menu from '@mui/material/Menu'; */
 import { loginRequest } from "../authConfig";
 import {
   Avatar,
@@ -13,7 +9,7 @@ import {
   DropdownMenu,
   DropdownTrigger,
 } from "@nextui-org/react";
-import { Button } from "@nextui-org/react";
+import { Button, Image } from "@nextui-org/react";
 
 export const SignInButton = ({ isHome }: { isHome: boolean }) => {
   const { instance } = useMsal();
@@ -25,12 +21,17 @@ export const SignInButton = ({ isHome }: { isHome: boolean }) => {
   };
 
   return isHome ? (
-    <Button className='mt-5' color='primary' onClick={() => handleLogin()}>
-      Iniciar sesión
+    <Button
+      startContent={<Image loading="lazy" height={24} width={24} alt="Azure icon" src="https://authjs.dev/img/providers/azure.svg"/>}
+      className='mt-5'
+      color='primary'
+      onClick={() => handleLogin()}
+    >
+      Iniciar sesión con Azure Active Directory B2C
     </Button>
   ) : (
     <div>
-      <Dropdown placement='bottom-end'>
+      <Dropdown>
         <DropdownTrigger>
           <Avatar
             isBordered

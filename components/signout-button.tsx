@@ -1,10 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import { useMsal } from "@azure/msal-react";
-// import Button from "@mui/material/Button";
 import { Button as BT } from "@nextui-org/react";
-/* import MenuItem from '@mui/material/MenuItem';
-import Menu from '@mui/material/Menu'; */
 import { loginRequest } from "../authConfig";
 import { useRouter } from "next/navigation";
 import {
@@ -45,9 +42,10 @@ export const SignOutButton = () => {
 
   return (
     <div>
-      <Dropdown placement='bottom-end'>
+      <Dropdown>
         <DropdownTrigger>
           <Avatar
+            aria-label='Avatar'
             isBordered
             as='button'
             className='transition-transform'
@@ -68,14 +66,14 @@ export const SignOutButton = () => {
             color='primary'
             onClick={() => router.push(`/admin/${graphData?.id}/profile`)}
           >
-            Profile
+            Perfil
           </DropdownItem>
           <DropdownItem
             key='logoutRedirect'
-            color='primary'
+            color='danger'
             onClick={() => handleLogout()}
           >
-            Logout
+            Cerrar sesión
           </DropdownItem>
         </DropdownMenu>
       </Dropdown>
