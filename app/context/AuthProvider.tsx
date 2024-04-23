@@ -1,11 +1,11 @@
 "use client";
 import { MsalProvider } from "@azure/msal-react";
-import { PublicClientApplication, EventType } from "@azure/msal-browser";
+import { PublicClientApplication, EventType, Configuration } from "@azure/msal-browser";
 import { msalConfig } from "../../authConfig";
 import { CustomNavigationClient } from "../../lib/utils/NavigationClient";
 import { useRouter } from "next/navigation";
  
-export const msalInstance = new PublicClientApplication(msalConfig);
+export const msalInstance = new PublicClientApplication(msalConfig as Configuration);
 msalInstance.initialize().then(() => {
   const accounts = msalInstance.getAllAccounts();
   if (accounts.length > 0) {

@@ -10,7 +10,7 @@ export function MainNavbar({
 
   ...props
 }: React.HTMLAttributes<HTMLElement>) {
-  const [graphData, setGraphData] = useState(null);
+  const [graphData, setGraphData] = useState<any>(null);
 
   useEffect(() => {
     const fetchData = async () => {

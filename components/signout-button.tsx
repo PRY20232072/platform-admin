@@ -1,11 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
 import { useMsal } from "@azure/msal-react";
-// import Button from "@mui/material/Button";
-import { Button as BT } from "@nextui-org/react";
-/* import MenuItem from '@mui/material/MenuItem';
-import Menu from '@mui/material/Menu'; */
-import { loginRequest } from "../authConfig";
 import { useRouter } from "next/navigation";
 import {
   Avatar,
@@ -15,14 +10,12 @@ import {
   DropdownTrigger,
 } from "@nextui-org/react";
 
-import { useGraphData } from "@/hooks/useGraphData";
 import msgraphService from "@/services/msgraphService";
-import { emptyAdmin } from "@/data/data";
 
 export const SignOutButton = () => {
   const { instance } = useMsal();
   const router = useRouter();
-  const [graphData, setGraphData] = useState();
+  const [graphData, setGraphData] = useState<any>();
 
   useEffect(() => {
     const fetchData = async () => {
