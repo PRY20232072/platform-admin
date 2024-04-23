@@ -41,42 +41,40 @@ export const SignOutButton = () => {
   };
 
   return (
-    <div>
-      <Dropdown>
-        <DropdownTrigger>
-          <Avatar
-            aria-label='Avatar'
-            isBordered
-            as='button'
-            className='transition-transform'
-            showFallback
-            name={graphData?.displayName}
-            src='https://images.unsplash.com/broken'
-          />
-        </DropdownTrigger>
-        <DropdownMenu aria-label='Menu Actions' variant='flat'>
-          <DropdownItem key='email' className='h-14 gap-2'>
-            <p className='font-semibold'>Signed in as</p>
-            <p className='font-semibold'>
-              {graphData?.identities[0].issuerAssignedId}
-            </p>
-          </DropdownItem>
-          <DropdownItem
-            key='adminProfile'
-            color='primary'
-            onClick={() => router.push(`/admin/${graphData?.id}/profile`)}
-          >
-            Perfil
-          </DropdownItem>
-          <DropdownItem
-            key='logoutRedirect'
-            color='danger'
-            onClick={() => handleLogout()}
-          >
-            Cerrar sesión
-          </DropdownItem>
-        </DropdownMenu>
-      </Dropdown>
-    </div>
+    <Dropdown>
+      <DropdownTrigger>
+        <Avatar
+          aria-label='Avatar'
+          isBordered
+          as='button'
+          className='transition-transform'
+          showFallback
+          name={graphData?.displayName}
+          src='https://images.unsplash.com/broken'
+        />
+      </DropdownTrigger>
+      <DropdownMenu aria-label='Menu Actions' variant='flat'>
+        <DropdownItem key='email' className='h-14 gap-2'>
+          <p className='font-semibold'>Signed in as</p>
+          <p className='font-semibold'>
+            {graphData?.identities[0].issuerAssignedId}
+          </p>
+        </DropdownItem>
+        <DropdownItem
+          key='adminProfile'
+          color='primary'
+          onClick={() => router.push(`/admin/${graphData?.id}/profile`)}
+        >
+          Perfil
+        </DropdownItem>
+        <DropdownItem
+          key='logoutRedirect'
+          color='danger'
+          onClick={() => handleLogout()}
+        >
+          Cerrar sesión
+        </DropdownItem>
+      </DropdownMenu>
+    </Dropdown>
   );
 };

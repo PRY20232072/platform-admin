@@ -22,7 +22,15 @@ export const SignInButton = ({ isHome }: { isHome: boolean }) => {
 
   return isHome ? (
     <Button
-      startContent={<Image loading="lazy" height={24} width={24} alt="Azure icon" src="https://authjs.dev/img/providers/azure.svg"/>}
+      startContent={
+        <Image
+          loading='lazy'
+          height={24}
+          width={24}
+          alt='Azure icon'
+          src='https://authjs.dev/img/providers/azure.svg'
+        />
+      }
       className='mt-5'
       color='primary'
       onClick={() => handleLogin()}
@@ -30,27 +38,25 @@ export const SignInButton = ({ isHome }: { isHome: boolean }) => {
       Iniciar sesión con Azure Active Directory B2C
     </Button>
   ) : (
-    <div>
-      <Dropdown>
-        <DropdownTrigger>
-          <Avatar
-            isBordered
-            as='button'
-            className='transition-transform'
-            showFallback
-            src='https://images.unsplash.com/broken'
-          />
-        </DropdownTrigger>
-        <DropdownMenu aria-label='Menu Actions' variant='flat'>
-          <DropdownItem
-            key='loginRedirect'
-            color='primary'
-            onClick={() => handleLogin()}
-          >
-            Iniciar sesión
-          </DropdownItem>
-        </DropdownMenu>
-      </Dropdown>
-    </div>
+    <Dropdown placement="bottom-end">
+      <DropdownTrigger>
+        <Avatar
+          isBordered
+          as='button'
+          className='transition-transform'
+          showFallback
+          src='https://images.unsplash.com/broken'
+        />
+      </DropdownTrigger>
+      <DropdownMenu aria-label='Menu Actions' variant='flat'>
+        <DropdownItem
+          key='loginRedirect'
+          color='primary'
+          onClick={() => handleLogin()}
+        >
+          Iniciar sesión
+        </DropdownItem>
+      </DropdownMenu>
+    </Dropdown>
   );
 };
