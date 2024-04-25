@@ -35,6 +35,7 @@ type User = {
 
 interface UserProps {
   user_id: string;
+  user_type: string;
   patientFormModalClose: () => void;
 }
 
@@ -44,6 +45,7 @@ interface TableProps {
 
 const ConfirmModal: React.FC<UserProps> = ({
   user_id,
+  user_type,
   patientFormModalClose,
 }) => {
   const { isOpen, onOpen, onOpenChange, onClose } = useDisclosure();
@@ -82,7 +84,7 @@ const ConfirmModal: React.FC<UserProps> = ({
           {(onClose) => (
             <>
               <ModalHeader className='flex flex-col gap-1'>
-                Confirmar eliminación del paciente
+                Confirmar eliminación del {user_type === "Patient" ? "paciente" : "profesional de la salud"}
               </ModalHeader>
               <ModalBody>
                 <div>¿Estas seguro que quieres continuar?</div>
@@ -176,6 +178,7 @@ export const UsersTable: React.FC<TableProps> = ({ userType }) => {
             </Button>
             <ConfirmModal
               user_id={user.user_id}
+              user_type={userType}
               patientFormModalClose={onClose}
             />
           </div>
