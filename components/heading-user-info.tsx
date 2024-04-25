@@ -4,7 +4,7 @@ import { User2 } from "lucide-react";
 import CustomSuspense from "@/components/ui/custom-suspense";
 import Loading from "@/components/ui/loading";
 
-export default function Heading({ userData, userType }: { userData: any, userType: string }) {
+export default function Heading({ userData, userType }: { userData: any; userType: string }) {
   return (
     <CustomSuspense isLoading={userData === null} fallback={<Loading />}>
       <div className='justify-between items-center  border-b border-gray-200 flex w-full max-w-[1100px] gap-5 mt-1 max-md:max-w-full max-md:flex-wrap'>

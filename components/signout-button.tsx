@@ -1,8 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
 import { useMsal } from "@azure/msal-react";
-import { Button as BT } from "@nextui-org/react";
-import { loginRequest } from "../authConfig";
 import { useRouter } from "next/navigation";
 import {
   Avatar,
@@ -12,9 +10,7 @@ import {
   DropdownTrigger,
 } from "@nextui-org/react";
 
-import { useGraphData } from "@/hooks/useGraphData";
 import msgraphService from "@/services/msgraphService";
-import { emptyAdmin } from "@/data/data";
 
 export const SignOutButton = () => {
   const { instance } = useMsal();
