@@ -15,8 +15,15 @@ export const SignInButton = ({ isHome }: { isHome: boolean }) => {
   const { instance } = useMsal();
 
   const handleLogin = () => {
-    instance.loginRedirect(loginRequest).catch((e) => {
-      console.error(`loginRedirect failed: ${e}`);
+    //https://github.com/AzureAD/microsoft-authentication-library-for-js/issues/3117#issuecomment-788455732
+    instance.handleRedirectPromise()
+    .then(tokenResponse => {
+      if (tokenResponse === null) {
+        instance.loginRedirect(loginRequest);
+      }
+    })
+    .catch(e => {
+      console.error(`handleRedirectPromise failed: ${e}`);
     });
   };
 
