@@ -51,9 +51,9 @@ export const SignOutButton = () => {
       </DropdownTrigger>
       <DropdownMenu aria-label='Menu Actions' variant='flat'>
         <DropdownItem key='email' className='h-14 gap-2'>
-          <p className='font-semibold'>Signed in as</p>
+          <p className='font-semibold'>Iniciaste sesión como</p>
           <p className='font-semibold'>
-            {graphData?.identities[0].issuerAssignedId}
+            {graphData?.identities[1].issuerAssignedId}
           </p>
         </DropdownItem>
         <DropdownItem

@@ -32,7 +32,7 @@ export default function CardHome({ title }: { title: string }) {
         const data = await msgraphService.getPatientList();
         if (data && data.value.length > 0) {
           const updatedList = data.value.map((patient: any) => ({
-            col1: patient.displayName,
+            col1: patient.givenName,
             col2: patient.id ? patient.id : "N/A",
           }));
           setPatientsList(updatedList);
@@ -53,7 +53,7 @@ export default function CardHome({ title }: { title: string }) {
         const data = await msgraphService.getPractitionerList();
         if (data && data.value.length > 0) {
           const updatedList = data.value.map((practitioner: any) => ({
-            col1: practitioner.displayName,
+            col1: practitioner.givenName,
             col2: practitioner.id ? practitioner.id : "N/A",
           }));
           setPractitionerList(updatedList);
