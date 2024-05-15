@@ -20,14 +20,6 @@ export default function AdminProfileDetails({ graphData }: { graphData: any }) {
           />
           <Input
             isReadOnly
-            type='email'
-            label='Correo'
-            labelPlacement='outside'
-            placeholder='No disponible'
-            value={graphData?.identities[0].issuerAssignedId}
-          />
-          <Input
-            isReadOnly
             type='phone'
             label='Teléfono'
             labelPlacement='outside'
