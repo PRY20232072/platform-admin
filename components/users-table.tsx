@@ -26,6 +26,7 @@ import CustomSuspense from "@/components/ui/custom-suspense";
 import TableSkeleton from "@/components/ui/skeletons/table-skeleton";
 import msgraphService from "@/services/msgraphService";
 import Loading from "@/components/ui/loading";
+import { toast } from "react-toastify";
 
 type User = {
   name_id: string;
@@ -49,13 +50,19 @@ const ConfirmModal: React.FC<UserProps> = ({
   patientFormModalClose,
 }) => {
   const { isOpen, onOpen, onOpenChange, onClose } = useDisclosure();
-  const router = useRouter();
 
-  const handleDelete = () => {
-    msgraphService.deleteUserById(user_id);
-    location.reload();
-    onClose();
-    patientFormModalClose();
+  const handleDelete = async () => {
+    await msgraphService
+      .deleteUserById(user_id)
+      .then(() => {
+        toast.success("Usuario eliminado correctamente");
+        onClose();
+        patientFormModalClose();
+        location.reload();
+      })
+      .catch((error) => {
+        toast.error("Error al eliminar el usuario");
+      });
   };
 
   return (
@@ -109,6 +116,7 @@ export const UsersTable: React.FC<TableProps> = ({ userType }) => {
   const [filterValue, setFilterValue] = useState("");
   const [patientsList, setPatientsList] = useState<User[]>([]);
   const { isOpen, onOpen, onOpenChange, onClose } = useDisclosure();
+  const [isLoading, setIsLoading] = useState(false);
 
   const [page, setPage] = useState(1);
 
@@ -128,10 +136,10 @@ export const UsersTable: React.FC<TableProps> = ({ userType }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
+        setIsLoading(true);
         const data = await (userType === "Patient"
           ? msgraphService.getPatientList()
           : msgraphService.getPractitionerList());
-
         if (data && data.value.length > 0) {
           const updatedList = data.value.map(
             (patient: any) =>
@@ -144,10 +152,12 @@ export const UsersTable: React.FC<TableProps> = ({ userType }) => {
           setPatientsList(updatedList);
         } else {
           setPatientsList([]);
+        
         }
       } catch (error) {
         console.error("Failed to fetch graph data:", error);
       }
+      setIsLoading(false);
     };
 
     fetchData();
@@ -272,7 +282,7 @@ export const UsersTable: React.FC<TableProps> = ({ userType }) => {
 
   return (
     <CustomSuspense
-      isLoading={patientsList === null}
+      isLoading={isLoading}
       fallback={<TableSkeleton />}
     >
       <Table
@@ -306,7 +316,7 @@ export const UsersTable: React.FC<TableProps> = ({ userType }) => {
           )}
         </TableHeader>
         <TableBody
-          emptyContent={<Loading />}
+          emptyContent={'No hay pacientes registrados'}
           items={patientsList}
         >
           {(item) => (

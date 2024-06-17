@@ -52,9 +52,7 @@ export const SignOutButton = () => {
       <DropdownMenu aria-label='Menu Actions' variant='flat'>
         <DropdownItem key='email' className='h-14 gap-2'>
           <p className='font-semibold'>Iniciaste sesión como</p>
-          <p className='font-semibold'>
-            {graphData?.identities[1].issuerAssignedId}
-          </p>
+          <p className='font-semibold'>{graphData?.givenName}</p>
         </DropdownItem>
         <DropdownItem
           key='adminProfile'

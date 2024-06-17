@@ -4,7 +4,7 @@ require("dotenv").config();
 export const msalConfig = {
   auth: {
     clientId: process.env.AZURE_AD_B2C_CLIENT_ID || '',
-    authority: process.env.AZURE_AUTHORITY || '',
+    authority: `https://login.microsoftonline.com/${process.env.AZURE_AD_B2C_TENANT_ID}` || '',
     redirectUri: "/",
     postLogoutRedirectUri: "/",
     clientCapabilities: ["CP1"],
@@ -12,7 +12,7 @@ export const msalConfig = {
   policies: {
     authorities: {
       signUpSignIn: {
-        authority: process.env.AZURE_AUTHORITY,
+        authority: `https://login.microsoftonline.com/${process.env.AZURE_AD_B2C_TENANT_ID}`,
       },
     },
   },

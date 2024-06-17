@@ -1,4 +1,5 @@
 import { callMsGraph } from "@/lib/utils/MsGraphApiCall";
+require("dotenv").config();
 
 class MsGraphService {
   getMe = () => {
@@ -6,7 +7,7 @@ class MsGraphService {
   };
   getPatientList = () => {
     return callMsGraph(
-      "users?$filter=extension_25549976ad3f4b408bd442ed65100575_UserRole eq 'patient'",
+      `users?$filter=extension_${process.env.EXTENSION_APP_CLIENT_ID}_UserRole eq 'patient'`,
       "GET",
       null
     );
@@ -17,7 +18,7 @@ class MsGraphService {
 
   getPractitionerList = () => {
     return callMsGraph(
-      "users?$filter=extension_25549976ad3f4b408bd442ed65100575_UserRole eq 'practitioner'",
+      `users?$filter=extension_${process.env.EXTENSION_APP_CLIENT_ID}_UserRole eq 'practitioner'`,
       "GET",
       null
     );

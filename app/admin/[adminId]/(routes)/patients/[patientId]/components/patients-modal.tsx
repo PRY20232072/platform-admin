@@ -13,7 +13,7 @@ import {
 import { Plus } from "lucide-react";
 import msgraphService from "@/services/msgraphService";
 import { toast } from "react-toastify";
-
+require("dotenv").config();
 interface PatientProps {
   patient: any;
   patientFormModalClose: () => void;
@@ -60,13 +60,13 @@ const ConfirmModal: React.FC<PatientProps> = ({
   const handleCreate = () => {
     const provIndentity = `${patient.displayName
       .replace(/\s+/g, "")
-      .toLowerCase()}@pry20232072.onmicrosoft.com`;
+      .toLowerCase()}@${process.env.AZURE_AD_B2C_TENANT_NAME}.onmicrosoft.com`;
 
     const updatedIdentities = [
       ...patient.identities.slice(0, 1),
       {
         signInType: "userPrincipalName",
-        issuer: "pry20232072.onmicrosoft.com",
+        issuer: `${process.env.AZURE_AD_B2C_TENANT_NAME}.onmicrosoft.com`,
         issuerAssignedId: provIndentity,
       },
     ];
@@ -200,17 +200,17 @@ export const PatientsModal = () => {
       },
       userPrincipalName: "",
       userType: "Member",
-      extension_25549976ad3f4b408bd442ed65100575_UserRole: "patient",
-      extension_25549976ad3f4b408bd442ed65100575_PhoneNumber: "",
+      [`extension_${process.env.EXTENSION_APP_CLIENT_ID}_UserRole`]: "patient",
+      [`extension_${process.env.EXTENSION_APP_CLIENT_ID}_PhoneNumber`]: "",
       identities: [
         {
           signInType: "emailAddress",
-          issuer: "pry20232072.onmicrosoft.com",
+          issuer: `${process.env.AZURE_AD_B2C_TENANT_NAME}.onmicrosoft.com`,
           issuerAssignedId: "",
         },
         {
           signInType: "userPrincipalName",
-          issuer: "pry20232072.onmicrosoft.com",
+          issuer: `${process.env.AZURE_AD_B2C_TENANT_NAME}.onmicrosoft.com`,
           issuerAssignedId: "",
         },
       ],
